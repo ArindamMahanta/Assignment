@@ -45,13 +45,17 @@ public class PlayerMovement : MonoBehaviour
 
                     // Find path to the clicked tile using A* pathfinding
                     currentPath = Pathfinding.FindPath(startTile, clickedTile);
-                    currentPath.Reverse();
-                    currentPathIndex = 0;
 
                     if (currentPath != null)
                     {
+                        currentPath.Reverse();
+                        currentPathIndex = 0;
                         // Start moving along the path
                         StartCoroutine(MoveAlongPath());
+                    }
+                    else{
+
+                        Debug.Log("No possible path found. Player is cornered!");
                     }
                 }
             }
